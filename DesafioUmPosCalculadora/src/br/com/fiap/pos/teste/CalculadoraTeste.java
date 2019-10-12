@@ -133,52 +133,23 @@ public class CalculadoraTeste {
 	}
 
 	private static ArrayList<Float> telaLeitura(boolean flagLeitura) {
-
+		
 		ArrayList<Float> listaNumeros = new ArrayList<>();
-
-		try {
-
-			String dadosPrimeiraEntrada = JOptionPane.showInputDialog("Digite o primeiro número:");
-
-			if (dadosPrimeiraEntrada == null) {
-				JOptionPane.showMessageDialog(null, "\n Ação não permitida o uso - Uso incorreto", "Uso incorreto",
-						JOptionPane.ERROR_MESSAGE);
-
-				throw new Exception("Ação não permitida o uso - Uso incorreto");
-
-			}
-
-			Float primeiroNumero = Float.valueOf(dadosPrimeiraEntrada);
-
-			listaNumeros.add(primeiroNumero);
-
-			while (flagLeitura) {
-
-				String dadosSegundaEntrada = JOptionPane.showInputDialog("Digite o proximo número: ");
-
-				if (dadosSegundaEntrada == null) {
-					JOptionPane.showMessageDialog(null, "\n Ação não permitida o uso - Uso incorreto", "Uso incorreto",
-							JOptionPane.ERROR_MESSAGE);
-					throw new Exception("Ação não permitida o uso - Uso incorreto");
-				}
-
-				float proximoNumero = Float.valueOf(dadosSegundaEntrada);
-
-				listaNumeros.add(proximoNumero);
-
-				flagLeitura = (JOptionPane
-						.showInputDialog("Se deseja digitar mais números escreva sim, " + "para sair escreva não?")
-						.equals("sim") ? true : false);
-
-			}
-
-		} catch (Exception e) {
-			System.err.println(e.getMessage());
-			return null;
+		
+		while(flagLeitura) {
+			
+			String dadosEntrada = JOptionPane.showInputDialog("Digite o primeiro número: \n" +
+			"Caso tenha digitados todos, apertar botão cancelar ou 'X'");
+			
+			if(dadosEntrada == null)
+				break;
+			
+			listaNumeros.add(Float.valueOf(dadosEntrada));
+			
 		}
-
+		
 		return listaNumeros;
-
+		
 	}
-
+	
 }
