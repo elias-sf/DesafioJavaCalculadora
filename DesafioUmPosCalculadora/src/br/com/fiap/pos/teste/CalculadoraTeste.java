@@ -53,11 +53,11 @@ public class CalculadoraTeste {
 				subtracao();
 				break;
 			case "Multiplicação":
-				System.out.println("Iniciando operação de multiplicacao");
+				System.out.println("Iniciando operação de multiplicação");
 				multiplicacao();
 				break;
 			case "Divisão":
-				System.out.println("divisao");
+				System.out.println("divisão");
 				divisao();
 				break;
 			default:
@@ -76,6 +76,9 @@ public class CalculadoraTeste {
 
 		ArrayList<Float> listaNumeros = telaLeitura(true);
 
+		if (listaNumeros.isEmpty())
+			return;
+
 		float resultado = calculadora.divisao(listaNumeros);
 
 		JOptionPane.showMessageDialog(null, "Resultado da operação é:" + df.format(resultado), "Resultado",
@@ -90,6 +93,9 @@ public class CalculadoraTeste {
 		CalculadoraBasica calculadora = new Calculadora();
 
 		ArrayList<Float> listaNumeros = telaLeitura(true);
+
+		if (listaNumeros.isEmpty())
+			return;
 
 		float resultado = calculadora.multiplicacao(listaNumeros);
 
@@ -106,6 +112,9 @@ public class CalculadoraTeste {
 
 		ArrayList<Float> listaNumeros = telaLeitura(true);
 
+		if (listaNumeros.isEmpty())
+			return;
+
 		float resultado = calculadora.subtracao(listaNumeros);
 
 		JOptionPane.showMessageDialog(null, "Resultado da operação é:" + df.format(resultado), "Resultado",
@@ -121,6 +130,9 @@ public class CalculadoraTeste {
 
 		ArrayList<Float> listaNumeros = telaLeitura(true);
 
+		if (listaNumeros.isEmpty())
+			return;
+
 		float resultado = calculadora.soma(listaNumeros);
 
 		// float resultado = calculadora.soma(primeiroNumero, proximoNumero);
@@ -133,23 +145,23 @@ public class CalculadoraTeste {
 	}
 
 	private static ArrayList<Float> telaLeitura(boolean flagLeitura) {
-		
+
 		ArrayList<Float> listaNumeros = new ArrayList<>();
-		
-		while(flagLeitura) {
-			
-			String dadosEntrada = JOptionPane.showInputDialog("Digite o primeiro número: \n" +
-			"Caso tenha digitados todos, apertar botão cancelar ou 'X'");
-			
-			if(dadosEntrada == null)
+
+		while (flagLeitura) {
+
+			String dadosEntrada = JOptionPane.showInputDialog("Digite um número de cada vez (sem espaço): \n"
+					+ "Caso tenha digitados todos os números, apertar botão cancelar ou 'X'");
+
+			if (dadosEntrada == null)
 				break;
-			
+
 			listaNumeros.add(Float.valueOf(dadosEntrada));
-			
+
 		}
-		
+
 		return listaNumeros;
-		
+
 	}
-	
+
 }
